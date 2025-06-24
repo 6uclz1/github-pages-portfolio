@@ -29,9 +29,9 @@ export default function WebAppCard({ webApp }: WebAppCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border border-gray-200">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-2xl transition-shadow duration-300 p-6 border border-gray-200 dark:border-gray-700">
       <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-semibold text-gray-900 truncate">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white truncate">
           {webApp.name}
         </h3>
         <div className="flex gap-2 ml-4">
@@ -39,7 +39,7 @@ export default function WebAppCard({ webApp }: WebAppCardProps) {
             href={webApp.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-full transition-colors"
+            className="p-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-full transition-colors"
             title="サイトを開く"
           >
             <ExternalLink size={18} />
@@ -48,7 +48,7 @@ export default function WebAppCard({ webApp }: WebAppCardProps) {
             href={webApp.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-full transition-colors"
+            className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-full transition-colors"
             title="GitHubリポジトリを開く"
           >
             <Code size={18} />
@@ -56,14 +56,14 @@ export default function WebAppCard({ webApp }: WebAppCardProps) {
         </div>
       </div>
 
-      <p className="text-gray-600 text-sm mb-4 h-12 overflow-hidden">
+      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 h-12 overflow-hidden">
         {webApp.description || 'No description available'}
       </p>
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           {webApp.language && (
-            <span className="flex items-center gap-1 text-xs">
+            <span className="flex items-center gap-1 text-xs text-gray-700 dark:text-gray-300">
               <div
                 className={`w-3 h-3 rounded-full ${getLanguageColor(webApp.language)}`}
               />
@@ -71,7 +71,7 @@ export default function WebAppCard({ webApp }: WebAppCardProps) {
             </span>
           )}
         </div>
-        <div className="flex items-center gap-1 text-xs text-gray-500">
+        <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
           <Calendar size={12} />
           {formatDate(webApp.updatedAt)}
         </div>
@@ -82,13 +82,13 @@ export default function WebAppCard({ webApp }: WebAppCardProps) {
           {webApp.topics.slice(0, 3).map((topic) => (
             <span
               key={topic}
-              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+              className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
             >
               {topic}
             </span>
           ))}
           {webApp.topics.length > 3 && (
-            <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full">
+            <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-xs rounded-full">
               +{webApp.topics.length - 3}
             </span>
           )}
