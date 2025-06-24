@@ -5,7 +5,12 @@ const USERNAME = '6uclz1';
 
 export async function fetchGitHubRepositories(): Promise<GitHubRepository[]> {
   try {
-    const response = await fetch(`${GITHUB_API_BASE}/users/${USERNAME}/repos?per_page=100&sort=updated`);
+    const response = await fetch(`${GITHUB_API_BASE}/users/${USERNAME}/repos?per_page=100&sort=updated`, {
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'GitHub-Pages-Portfolio'
+      }
+    });
     if (!response.ok) {
       throw new Error(`GitHub API error: ${response.status}`);
     }
